@@ -26,6 +26,8 @@ public class SecurityConfig {
 
                 .requestMatchers("/api/v1/users/addUser","/api/v1/users/login")
                 .permitAll()
+                .requestMatchers("/api/v1/counties/addCountries").hasRole("ADMIN")
+                .requestMatchers("/api/v1/counties/profile").hasAnyRole("ADMIN","USER")
                 .anyRequest().authenticated();
 
 
